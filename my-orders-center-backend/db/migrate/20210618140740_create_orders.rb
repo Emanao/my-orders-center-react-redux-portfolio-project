@@ -4,7 +4,6 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.integer :nr
       t.text :description
       t.references :site, null: false, foreign_key: true
-      t.references :note, null: false, foreign_key: true
 
       t.timestamps
     end

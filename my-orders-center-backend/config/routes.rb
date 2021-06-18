@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  resources :notes
+  resources :orders
     namespace :api do
         namespace :v1 do
-            resources :orders
-            resources :notes
-            resources :sites          
+                                resources :sites          
         end
     end
 
