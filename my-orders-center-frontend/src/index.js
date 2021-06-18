@@ -1,17 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {createStore, compose, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk'
+import store from './store'
 import { Provider } from 'react-redux'
-
-import rootReducer from './reducers/orders'
 import App from './App';
 
-
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)));
 
 // import './index.css';
 // import reportWebVitals from './reportWebVitals';
