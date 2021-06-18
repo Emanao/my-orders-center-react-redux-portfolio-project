@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_18_140740) do
+ActiveRecord::Schema.define(version: 2021_06_18_140851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "notes", force: :cascade do |t|
+    t.text "content"
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_notes_on_order_id"
+  end
 
   create_table "orders", force: :cascade do |t|
     t.integer "nr"
@@ -30,5 +38,6 @@ ActiveRecord::Schema.define(version: 2021_06_18_140740) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "notes", "orders"
   add_foreign_key "orders", "sites"
 end
