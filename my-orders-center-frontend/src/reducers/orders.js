@@ -1,23 +1,12 @@
-export default function orders (state={
-    data:[], 
-    loading:false
-    }
+export default function orders (state=[]
     , action) {
     switch(action.type){
         case 'ADD_ORDER_REQUEST':
             // debugger
-            return{
-                ...state,
-                loading: true,
-                data: [...state.data]
-            }
+            return [...state]
         case 'ADD_ORDER':
             // debugger
-            return {
-                ...state,
-                loading: false,
-                data: [...state.data, action.order]
-            }
+            return [...state, action.order]
         default:
             return state
     }
