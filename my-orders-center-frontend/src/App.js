@@ -1,13 +1,16 @@
-import React from 'react'
+import React from 'react';
+
+// import './App.css';
+
 import OrderForm from './components/OrderForm'
-import './App.css';
+import {NavBar} from './components/NavBar'
 
 class App extends React.Component {
     render(){
         return (
             <div>
-                <header className="App-header">
-                    My Orders Center
+                <header className="navbar navbar-expand-lg navbar-light   bg-dark">
+                    <NavBar />
                 </header>
                 <div>
                     <OrderForm/>
