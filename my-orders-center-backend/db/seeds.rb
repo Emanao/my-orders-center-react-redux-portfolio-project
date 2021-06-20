@@ -6,11 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Order.delete_all
-ActiveRecord::Base.connection.reset_pk_sequence!("order")
+
 
 Note.delete_all
 ActiveRecord::Base.connection.reset_pk_sequence!("note")
+
+Order.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!("order")
 
 Site.delete_all
 ActiveRecord::Base.connection.reset_pk_sequence!("site")

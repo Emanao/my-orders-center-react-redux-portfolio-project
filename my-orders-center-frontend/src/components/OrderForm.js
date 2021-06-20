@@ -7,7 +7,7 @@ class OrderInput extends React.Component{
     state={
         nr: "",
         site:"",
-        notes:""
+        description:""
     }
     handleChange = event => this.setState({[event.target.name]:event.target.value})
 
@@ -17,7 +17,7 @@ class OrderInput extends React.Component{
         this.setState({
             nr: "",
             site:"",
-            notes:""
+            description:""
         })
 
         
@@ -55,16 +55,16 @@ class OrderInput extends React.Component{
                         </div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="order_notes" className="col-form-label"> Notes</label>
+                        <label htmlFor="description" className="col-form-label"> Description</label>
                         <div className="col-sm-8">
-                            <textarea 
+                        <input 
                             className="form-control form-control-sm" 
-                            name="notes"
-                            value={this.state.notes}
+                            type="text" 
+                            name="description"
+                            value={this.state.description} 
                             onChange={this.handleChange}
-                            id="order_notes" 
-                            rows="3">              
-                            </textarea>
+                            id="description" 
+                            placeholder=""/>                    
                         </div>
                     </div>
                     <div className="form-group mt-3">

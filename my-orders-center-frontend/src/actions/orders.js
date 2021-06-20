@@ -4,13 +4,19 @@
         type: "ADD_ORDER",
         order
     }
+}
+
+export const addOrderRequest = () =>{
+    return {
+        type: "ADD_ORDER_REQUEST",
+    }
 
 }
 
 //asynchronous action creator that returns a functions instead of an action. Inner function receives the store and getState from the store. 
 export const asyncPostOrders = order =>{
     return dispatch =>{
-        dispatch()
+        dispatch(addOrderRequest())
         fetch('http://localhost:3001/api/v1/orders',{
             method: 'POST',
             headers:{
@@ -20,12 +26,9 @@ export const asyncPostOrders = order =>{
             body: JSON.stringify(order)
         })
         .then(resp=>resp.json())
-        .then(order =>{
-            // if(order.error){
-            //     alert(order.error)
-            // }else{
-                dispatch(addOrder(order))
-            // }
+        .then(order=>{
+            console.log(order.data);
+            dispatch(addOrder(order.data));
         })
         .catch(console.log(order.error))
     }
