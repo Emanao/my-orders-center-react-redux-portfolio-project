@@ -3,7 +3,12 @@ import React from 'react'
 
 const Order = ({order})=>{
     return(
-        <p>{order.attributes.description}</p>
+        <tr>
+            <th scope='row'>{order.attributes.nr}</th>
+            <td>{order.attributes.description}</td>
+            <td>{order.attributes.site.name}</td>
+        </tr>
+
     )
 }
 
