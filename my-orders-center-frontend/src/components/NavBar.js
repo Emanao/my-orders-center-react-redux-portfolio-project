@@ -26,7 +26,7 @@ export const NavBar = ()=>{
                     className='nav-link text-white'
                     to='/orders'
                     exact
-                    >Show Orders</NavLink>
+                    >My Orders</NavLink>
                 </li>
             </ul>
         </div>

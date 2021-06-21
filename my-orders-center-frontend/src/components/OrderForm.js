@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addOrder,asyncPostOrders } from '../actions/orders'
+import { addOrder,fetchcOrdersPost } from '../actions/orders'
 
 
-class OrderInput extends React.Component{
+class OrderForm extends React.Component{
     state={
         nr: "",
         site:"",
@@ -13,7 +13,7 @@ class OrderInput extends React.Component{
 
     handleSubmit = event=>{
         event.preventDefault();
-        this.props.asyncPostOrders({order: this.state});
+        this.props.fetchcOrdersPost({order: this.state});
         this.setState({
             nr: "",
             site:"",
@@ -26,9 +26,9 @@ class OrderInput extends React.Component{
     render(){
         return (
             <div className="container">
-                <h2>Add Order to Track</h2>
+                <h3>Add Order</h3>
                 <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
+                    <div className="form-group row">
                         <label htmlFor="order_id" className="col-form-label">Order number</label>
                         <div className="col-sm-8">
                         <input 
@@ -80,4 +80,4 @@ class OrderInput extends React.Component{
     }
 }
 
-export default connect(null, {addOrder, asyncPostOrders})(OrderInput);
+export default connect(null, {addOrder, fetchcOrdersPost})(OrderForm);

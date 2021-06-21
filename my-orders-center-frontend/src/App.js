@@ -7,7 +7,7 @@ import {Home} from './components/Home'
 import OrderForm from './components/OrderForm'
 import {fetchOrders} from './actions/orders'
 
-import Orders from './components/Orders'
+import OrdersList from  './components/OrderList'
 
 class App extends React.Component {
     componentDidMount(){
@@ -23,7 +23,7 @@ class App extends React.Component {
                 render={()=><OrderForm />}/>
                 <Route 
                 exact path='/orders' 
-                render={()=><Orders />}/>
+                render={()=><OrdersList/>}/>
                 <Route 
                 exact path='/'  
                 render={()=><Home />}/>

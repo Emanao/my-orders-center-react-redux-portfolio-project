@@ -1,7 +1,7 @@
 import React from 'react'
 // import { connect } from 'react-redux'
 
-const Order = ({order})=>{
+const OrderItem = ({order})=>{
     return(
         <tr>
             <th scope='row'>{order.attributes.nr}</th>
@@ -12,5 +12,5 @@ const Order = ({order})=>{
     )
 }
 
-export default Order;
+export default OrderItem;
 // export default connect({orders})(Orders);

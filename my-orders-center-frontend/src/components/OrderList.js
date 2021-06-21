@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Order from './Order'
+import OrderItem from './OrderRow'
 
-const Orders = ({orders})=>{
+const OrdersList = ({orders})=>{
     console.log("Orders");
     console.log(orders);
-    const ordersList = orders.map(order=><Order key={order.id} order={order}/>);
+    const ordersList = orders.map(order=><OrderItem key={order.id} order={order}/>);
     return(
         <div className='container'>
-            <div className='table'>
+            <table className='table mt-3'>
                 <thead>
                     <tr>
                         <th scope='col'>#</th>
@@ -19,10 +19,10 @@ const Orders = ({orders})=>{
                 <tbody>
                     {ordersList}
                 </tbody>
-        </div>
+        </table>
         </div>
     )
 }
 
 export default connect(
-    (state)=>({orders:state.orders}))(Orders);
+    ({orders})=>({orders}))(OrdersList);
