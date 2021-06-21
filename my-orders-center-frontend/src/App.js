@@ -1,21 +1,36 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 import {NavBar} from './components/NavBar'
-import OrderForm from './components/OrderForm'
 import {Home} from './components/Home'
+import OrderForm from './components/OrderForm'
+import {fetchOrders} from './actions/orders'
+
+import Orders from './components/Orders'
 
 class App extends React.Component {
+    componentDidMount(){
+        this.props.fetchOrders();
+    }
+
     render(){
         return (
             <div>              
                 <NavBar />
-                <Route exact path='/orders/new' render={()=><OrderForm />}/>
-                <Route exact path='/'  render={()=><Home />}/>
+                <Route 
+                exact path='/orders/new' 
+                render={()=><OrderForm />}/>
+                <Route 
+                exact path='/orders' 
+                render={()=><Orders />}/>
+                <Route 
+                exact path='/'  
+                render={()=><Home />}/>
             </div>
           );        
     }
 }
 
-export default App;
+export default connect(null, {fetchOrders} )(App);
 

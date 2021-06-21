@@ -2,12 +2,12 @@ export default function orders (state=[]
     , action) {
     switch(action.type){
         case 'ADD_ORDER_REQUEST':
-            // debugger
-            return [...state]
+            return [...state];
         case 'ADD_ORDER':
-            // debugger
-            return [...state, action.order]
+            return [...state, action.order];
+        case 'ADD_ORDERS':
+            return action.orders
         default:
-            return state
+            return state;
     }
 }

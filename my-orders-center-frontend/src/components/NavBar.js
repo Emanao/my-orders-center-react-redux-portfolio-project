@@ -14,12 +14,19 @@ export const NavBar = ()=>{
                     exact
                     >Home</NavLink>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                     <NavLink 
                     className='nav-link text-white'
                     to='/orders/new'
                     exact
                     >Add Order</NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink 
+                    className='nav-link text-white'
+                    to='/orders'
+                    exact
+                    >Show Orders</NavLink>
                 </li>
             </ul>
         </div>
