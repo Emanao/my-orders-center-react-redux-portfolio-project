@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 
 import {NavBar} from './components/NavBar'
@@ -21,27 +21,27 @@ class App extends React.Component {
             <div>              
                 <NavBar />
                 
-                {/* <Route path='/orders' 
-                    render = {routerProps=>{
-                        return <OrdersList {...routerProps}/>
-                } }/> */}
-                                
-                <Route exact path='/orders/new'
-                    component={ OrderForm }/>
-                
-                <Route exact path={`/orders/:orderId`} 
-                    render={(props)=>{
-                        // console.log(orders)
-                        // console.log(props.match.params.orderId)
+                <Switch>       
+                    <Route exact path='/orders/new'
+                        component={ OrderForm }/>
+                    
+                    <Route exact path='/orders' 
+                        component= { OrdersList }/>
+                                        
+                    <Route exact path={`/orders/:orderId`} 
+                        render={(props)=>{
 
-                        const order = orders.find(order=>order.id===props.match.params.orderId)
+                            // console.log(orders)
+                            // console.log(props.match.params.orderId)
 
-                        // console.log(order)
-                        return <OrderDetails order={order} {...this.props}/>
-                }} />   
+                            const order = orders.find(order=>order.id===props.match.params.orderId)
 
-                <Route exact path='/orders' 
-                    component= { OrdersList }/>
+                            // console.log(order)
+                            return <OrderDetails order={order} {...this.props}/>
+                    }} />   
+                </Switch>      
+
+
                 
                 <Route exact path='/'
                     component ={ Home }/>
