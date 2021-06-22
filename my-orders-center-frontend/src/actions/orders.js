@@ -38,7 +38,7 @@ export const createOrder = (order, history) =>{
             dispatch(addOrder(order.data));
             history.push(`/orders/${order.data.id}`)
         })
-        .catch(console.log(order.error))
+        .catch(error=>console.error('Error:', order.error))
     }
 
 }
@@ -50,6 +50,6 @@ export const fetchOrders = ()=>{
             console.log(orders);
             dispatch(addOrders(orders.data))
         })
-        // .catch(console.log(orders.error))
+        .catch(error=>console.error('Error:', error))
     }
 }
