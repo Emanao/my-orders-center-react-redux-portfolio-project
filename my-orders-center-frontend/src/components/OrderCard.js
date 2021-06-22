@@ -1,6 +1,8 @@
 import React from 'react'
 
-const OrderDetails = ({order})=>{
+import NoteCard from './NoteCard';
+
+const OrderCard = ({order})=>{
     return (
         !!order?
         <div className='container'>
@@ -8,10 +10,10 @@ const OrderDetails = ({order})=>{
                 <p>Description: {order.attributes.description}</p>
                 <p>Store: {order.attributes.site.name}</p>
                 <h4>Notes</h4>
-                {order.attributes.notes.map((note, idx)=><p key={idx}>{note.content}</p>)}
+                {order.attributes.notes.map((note, idx)=><div key={idx}><NoteCard note={note}/></div>)}
 
 
         </div>:null
         )
 }
-export default OrderDetails;
+export default OrderCard;

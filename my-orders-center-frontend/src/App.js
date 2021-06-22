@@ -8,7 +8,7 @@ import OrderForm from './components/OrderForm'
 import {fetchOrders} from './actions/orders'
 
 import OrdersList from  './components/OrderList'
-import OrderDetails from './components/OrderDetails';
+import OrderCard from './components/OrderCard';
 
 class App extends React.Component {
     componentDidMount(){
@@ -37,7 +37,7 @@ class App extends React.Component {
                             const order = orders.find(order=>order.id===props.match.params.orderId)
 
                             // console.log(order)
-                            return <OrderDetails order={order} {...this.props}/>
+                            return <OrderCard order={order} {...this.props}/>
                     }} />   
                 </Switch>      
 
