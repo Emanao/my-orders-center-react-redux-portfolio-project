@@ -1,26 +1,35 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import OrderItem from './OrderRow'
+// import { Route } from 'react-router-dom'
+import OrderListItem from './OrderListItem'
+// import OrderDetails from './OrderDetails'
 
-const OrdersList = ({orders})=>{
+const OrdersList = ({orders, match})=>{
     console.log("Orders");
     console.log(orders);
-    const ordersList = orders.map(order=><OrderItem key={order.id} order={order}/>);
+    console.log(match)
+    const ordersList = orders.map(order=><OrderListItem key={order.id} order={order}/>);
     return(
-        <div className='container'>
-            <table className='table mt-3'>
-                <thead>
-                    <tr>
-                        <th scope='col'>#</th>
-                        <th scope='col'>Description</th>
-                        <th scope='col'>Site</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {ordersList}
-                </tbody>
-        </table>
-        </div>
+        <>
+            <div className='container'>
+                <table className='table mt-3'>
+                    <thead>
+                        <tr>
+                            <th scope='col'>#</th>
+                            <th scope='col'>Description</th>
+                            <th scope='col'>Site</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {ordersList}
+                    </tbody>
+                </table>
+            </div>
+            <>
+                
+            </>
+        </>
+
     )
 }
 

@@ -20,33 +20,35 @@ export const addOrders = (orders)=>{
 }
 
 //asynchronous action creator that returns a functions instead of an action. Inner function receives the store and getState from the store. 
-export const fetchcOrdersPost = order =>{
+export const createOrder = (order, history) =>{
     return dispatch =>{
         dispatch(addOrderRequest())
-        fetch('http://localhost:3001/api/v1/orders',{
+        const postData = {
             method: 'POST',
             headers:{
                 "Accept": "application/json",
                 "Content-Type": "application/json"
-            },
-            body: JSON.stringify(order)
-        })
+            },body: JSON.stringify(order)
+        }
+
+        return fetch('http://localhost:3001/api/v1/orders',postData )
         .then(resp=>resp.json())
         .then(order=>{
             console.log(order.data);
             dispatch(addOrder(order.data));
+            history.push(`/orders/${order.data.id}`)
         })
-        // .catch(console.log(order.error))
+        .catch(console.log(order.error))
     }
 
 }
 export const fetchOrders = ()=>{
     return (dispatch)=>{
-        fetch('http://localhost:3001/api/v1/orders')
+        return fetch('http://localhost:3001/api/v1/orders')
         .then(resp=>resp.json())
         .then(orders=>{
             console.log(orders);
-            dispatch(addOrders(orders.data));
+            dispatch(addOrders(orders.data))
         })
         // .catch(console.log(orders.error))
     }

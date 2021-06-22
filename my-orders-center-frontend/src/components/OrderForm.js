@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addOrder,fetchcOrdersPost } from '../actions/orders'
+import { createOrder } from '../actions/orders'
 
 
 class OrderForm extends React.Component{
@@ -13,14 +13,12 @@ class OrderForm extends React.Component{
 
     handleSubmit = event=>{
         event.preventDefault();
-        this.props.fetchcOrdersPost({order: this.state});
+        this.props.createOrder({order: this.state},this.props.history);
         this.setState({
             nr: "",
             site:"",
             description:""
-        })
-
-        
+        })        
     }
 
     render(){
@@ -80,4 +78,4 @@ class OrderForm extends React.Component{
     }
 }
 
-export default connect(null, {addOrder, fetchcOrdersPost})(OrderForm);
+export default connect(null, {createOrder})(OrderForm);

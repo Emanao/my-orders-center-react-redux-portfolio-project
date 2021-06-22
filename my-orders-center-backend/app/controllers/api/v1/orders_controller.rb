@@ -7,15 +7,16 @@ class Api::V1::OrdersController < ApplicationController
     def create
         order = Order.new(nr:params[:order][:nr], description:params[:order][:description])
         order.site = Site.find_or_initialize_by(name:params[:order][:site]) 
-        order.save
-        # byebug
-
-        orders_json = OrderSerializer.new(order).serialized_json
         
-        render json: orders_json
         
-        # order = Order.create(nr:params[:order][:nr], description:params[:order][:description])
+        if order.save
+            render json: OrderSerializer.new(order)
+        else
+            render json: order.errors.fullmessages.to_sentence
+        end
+        
     end
+
     private
     def order_params
         params.require(:order).permit(:nr, :site, :description)
