@@ -10,6 +10,14 @@ export const addNoteRequest = () =>{
     }
 
 }
+
+export const deleteNote = (noteId)=> {
+    return {
+        type: "DELETE_NOTE",
+        noteId
+    }
+}
+
 export const loadNotes = (notes)=>{
     return {
         type: "LOAD_NOTES",
@@ -38,8 +46,6 @@ export const createNoteRequest = (note, match) =>{
 
 }
 export const loadNotesRequest = (match)=>{
-    // console.log("loadNotesRequest");
-    // console.log(match);
     return (dispatch)=>{
         return fetch(`http://localhost:3001/api/v1/${match.url}/notes`)
         .then(resp=>resp.json())
@@ -49,4 +55,26 @@ export const loadNotesRequest = (match)=>{
         })
         .catch(error=>console.error('Error:', error))
     }
+}
+
+export const deleteNoteRequest = (note) =>{
+    return dispatch =>{
+        dispatch(deleteNote(note.id))
+        // const postData = {
+        //     method: 'POST',
+        //     headers:{
+        //         "Accept": "application/json",
+        //         "Content-Type": "application/json"
+        //     },body: JSON.stringify(note)
+        // }
+
+        // return fetch(`http://localhost:3001/api/v1/${match.url}/notes`,postData )
+        // .then(resp=>resp.json())
+        // .then(note=>{
+        //     console.log(note.data);
+        //     dispatch(createNote(note.data));
+        // })
+        // .catch(error=>console.error('Error:', error))
+    }
+
 }

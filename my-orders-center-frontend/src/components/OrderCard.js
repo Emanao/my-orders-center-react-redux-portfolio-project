@@ -16,7 +16,10 @@ class OrderCard extends React.Component{
                     <p>Description: {this.props.order.attributes.description}</p>
                     <p>Store: {this.props.order.attributes.site.name}</p>
                     <hr/>
-                    <NotesContainer orderId={this.props.order.id} notes={this.props.notes} match={this.props.match}/>
+                    <NotesContainer 
+                    orderId={this.props.order.id} 
+                    notes={this.props.notes} 
+                    match={this.props.match}/>
             </div>:null
             )    
     }
