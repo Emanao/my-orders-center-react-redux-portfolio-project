@@ -5,7 +5,7 @@ export default function orders (state=[]
             return [...state];
         case 'ADD_ORDER':
             return [...state, action.order];
-        case 'ADD_ORDERS':
+        case 'LOAD_ORDERS':
             return action.orders
         default:
             return state;

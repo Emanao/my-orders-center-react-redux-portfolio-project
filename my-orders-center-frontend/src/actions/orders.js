@@ -1,5 +1,5 @@
 //synchronous action creator returning an action
- export const addOrder = order =>{
+ export const createOrder = order =>{
     return {
         type: "ADD_ORDER",
         order: order
@@ -12,15 +12,15 @@ export const addOrderRequest = () =>{
     }
 
 }
-export const addOrders = (orders)=>{
+export const loadOrders = (orders)=>{
     return {
-        type: "ADD_ORDERS",
+        type: "LOAD_ORDERS",
         orders
     }
 }
 
 //asynchronous action creator that returns a functions instead of an action. Inner function receives the store and getState from the store. 
-export const createOrder = (order, history) =>{
+export const createOrderRequest = (order, history) =>{
     return dispatch =>{
         dispatch(addOrderRequest())
         const postData = {
@@ -35,7 +35,7 @@ export const createOrder = (order, history) =>{
         .then(resp=>resp.json())
         .then(order=>{
             console.log(order.data);
-            dispatch(addOrder(order.data));
+            dispatch(createOrder(order.data));
             history.push(`/orders/${order.data.id}`)
         })
         .catch(error=>console.error('Error:', order.error))
@@ -47,8 +47,8 @@ export const fetchOrders = ()=>{
         return fetch('http://localhost:3001/api/v1/orders')
         .then(resp=>resp.json())
         .then(orders=>{
-            console.log(orders);
-            dispatch(addOrders(orders.data))
+            console.log(orders.data);
+            dispatch(loadOrders(orders.data))
         })
         .catch(error=>console.error('Error:', error))
     }

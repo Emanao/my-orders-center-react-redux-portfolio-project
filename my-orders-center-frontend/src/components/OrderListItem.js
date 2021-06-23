@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// import { connect } from 'react-redux'
 
 const OrderListItem = ({order})=>{
     return(
@@ -17,4 +16,3 @@ const OrderListItem = ({order})=>{
 }
 
 export default OrderListItem;
-// export default connect({orders})(Orders);

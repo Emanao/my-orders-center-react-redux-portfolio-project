@@ -1,19 +1,24 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-import NoteCard from './NoteCard';
+import NotesContainer from './NotesContainer'
+import {loadNotesRequest} from '../actions/notes'
 
-const OrderCard = ({order})=>{
-    return (
-        !!order?
-        <div className='container'>
-                <h3>Details of Order #: {order.attributes.nr}</h3>
-                <p>Description: {order.attributes.description}</p>
-                <p>Store: {order.attributes.site.name}</p>
-                <h4>Notes</h4>
-                {order.attributes.notes.map((note, idx)=><div key={idx}><NoteCard note={note}/></div>)}
-
-
-        </div>:null
-        )
+class OrderCard extends React.Component{
+    componentDidMount(){
+        this.props.loadNotesRequest(this.props.match)
+    }
+    render(){    
+        return (
+            !!this.props.order?
+            <div className='container'>
+                    <h3>Details of Order #: {this.props.order.attributes.nr}</h3>
+                    <p>Description: {this.props.order.attributes.description}</p>
+                    <p>Store: {this.props.order.attributes.site.name}</p>
+                    <hr/>
+                    <NotesContainer orderId={this.props.order.id} notes={this.props.notes} match={this.props.match}/>
+            </div>:null
+            )    
+    }
 }
-export default OrderCard;
+export default connect((state)=>({notes: state.notes}),{loadNotesRequest})(OrderCard);

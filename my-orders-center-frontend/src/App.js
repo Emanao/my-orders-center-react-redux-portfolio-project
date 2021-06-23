@@ -28,16 +28,16 @@ class App extends React.Component {
                     <Route exact path='/orders' 
                         component= { OrdersList }/>
                                         
-                    <Route exact path={`/orders/:orderId`} 
-                        render={(props)=>{
+                    <Route path={`/orders/:orderId`} 
+                        render={(routerProps)=>{
 
-                            // console.log(orders)
+                            // console.log(props)
                             // console.log(props.match.params.orderId)
 
-                            const order = orders.find(order=>order.id===props.match.params.orderId)
+                            const order = orders.find(order=>order.id===routerProps.match.params.orderId)
 
                             // console.log(order)
-                            return <OrderCard order={order} {...this.props}/>
+                            return <OrderCard {...routerProps} order={order} />
                     }} />   
                 </Switch>      
 

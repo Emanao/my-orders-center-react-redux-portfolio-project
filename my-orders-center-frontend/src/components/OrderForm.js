@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createOrder } from '../actions/orders'
+import { createOrderRequest } from '../actions/orders'
 
 
 class OrderForm extends React.Component{
@@ -13,7 +13,7 @@ class OrderForm extends React.Component{
 
     handleSubmit = event=>{
         event.preventDefault();
-        this.props.createOrder({order: this.state},this.props.history);
+        this.props.createOrderRequest({order: this.state},this.props.history);
         this.setState({
             nr: "",
             site:"",
@@ -78,4 +78,4 @@ class OrderForm extends React.Component{
     }
 }
 
-export default connect(null, {createOrder})(OrderForm);
+export default connect(null, {createOrderRequest})(OrderForm);

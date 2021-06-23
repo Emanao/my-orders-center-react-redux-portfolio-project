@@ -1,11 +1,10 @@
 class NoteSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :content
+  attributes :content, :created_at
   #   belongs_to order
     attribute :order do |note| 
         {
-            nr: order.nr,
-            description: order.description
+            id: note.order_id
         }
     end
 end
