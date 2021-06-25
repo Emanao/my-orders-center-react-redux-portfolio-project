@@ -6,7 +6,6 @@ const NoteCard = ({ match, note, deleteNoteRequest})=>{
     const handleClick = (event)=>{
         console.log(note);
         deleteNoteRequest(match, note.id);
-
     }
     
     return (

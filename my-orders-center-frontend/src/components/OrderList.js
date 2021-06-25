@@ -16,6 +16,7 @@ const OrdersList = ({orders, match})=>{
                         <tr>
                             <th scope='col'>#</th>
                             <th scope='col'>Description</th>
+                            <th scope='col'>Tracking Link</th>
                             <th scope='col'>Site</th>
                         </tr>
                     </thead>

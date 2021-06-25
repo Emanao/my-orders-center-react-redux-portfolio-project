@@ -15,6 +15,7 @@ class OrderCard extends React.Component{
                     <h3>Details of Order #: {this.props.order.attributes.nr}</h3>
                     <p>Description: {this.props.order.attributes.description}</p>
                     <p>Store: {this.props.order.attributes.site.name}</p>
+                    <p>Tracking link: {this.props.order.attributes.tracking_url}</p>
                     <hr/>
                     <NotesContainer 
                     orderId={this.props.order.id} 

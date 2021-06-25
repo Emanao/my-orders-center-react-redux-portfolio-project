@@ -7,7 +7,8 @@ class OrderForm extends React.Component{
     state={
         nr: "",
         site:"",
-        description:""
+        description:"",
+        tracking_url: ""
     }
     handleChange = event => this.setState({[event.target.name]:event.target.value})
 
@@ -17,7 +18,8 @@ class OrderForm extends React.Component{
         this.setState({
             nr: "",
             site:"",
-            description:""
+            description:"",
+            tracking_url:""
         })        
     }
 
@@ -26,7 +28,7 @@ class OrderForm extends React.Component{
             <div className="container">
                 <h3>Add Order</h3>
                 <form onSubmit={this.handleSubmit}>
-                    <div className="form-group row">
+                    <div className="form-group">
                         <label htmlFor="order_id" className="col-form-label">Order number</label>
                         <div className="col-sm-8">
                         <input 
@@ -62,6 +64,19 @@ class OrderForm extends React.Component{
                             value={this.state.description} 
                             onChange={this.handleChange}
                             id="description" 
+                            placeholder=""/>                    
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="tracking_url" className="col-form-label"> Shipping Link</label>
+                        <div className="col-sm-8">
+                        <input 
+                            className="form-control form-control-sm" 
+                            type="text" 
+                            name="tracking_url"
+                            value={this.state.tracking_url} 
+                            onChange={this.handleChange}
+                            id="tracking_url" 
                             placeholder=""/>                    
                         </div>
                     </div>

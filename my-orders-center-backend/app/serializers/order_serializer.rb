@@ -1,6 +1,6 @@
 class OrderSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :nr, :description
+  attributes :nr, :description, :tracking_url
 #  belongs_to :site
     attribute :site do |order| 
         {  name: order.site.name }

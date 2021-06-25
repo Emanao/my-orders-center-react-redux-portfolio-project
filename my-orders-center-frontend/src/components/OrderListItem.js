@@ -8,6 +8,7 @@ const OrderListItem = ({order})=>{
             <Link  to={`/orders/${order.id}`}>{order.attributes.nr}</Link>
             </th>
             <td>{order.attributes.description}</td>
+            <td>{order.attributes.tracking_url}</td>
             <td>{order.attributes.site.name}</td>
             
         </tr>
