@@ -10,7 +10,7 @@ const NotesContainer =({match, orderId, notes})=>{
             <NotesForm match={match} orderId={orderId}/>
             <hr/>
             <div className="row gx-5">
-                {notes.map(note=><div key={note.id}><NoteCard note={note} /></div>)}
+                {notes.map(note=><div key={note.id}><NoteCard match={match} note={note} /></div>)}
             </div>
         </div> 
     )

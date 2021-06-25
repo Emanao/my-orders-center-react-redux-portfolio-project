@@ -8,7 +8,6 @@ export const addNoteRequest = () =>{
     return {
         type: "ADD_NOTE_REQUEST",
     }
-
 }
 
 export const deleteNote = (noteId)=> {
@@ -57,24 +56,22 @@ export const loadNotesRequest = (match)=>{
     }
 }
 
-export const deleteNoteRequest = (note) =>{
+export const deleteNoteRequest = (match, noteId) =>{
     return dispatch =>{
-        dispatch(deleteNote(note.id))
-        // const postData = {
-        //     method: 'POST',
-        //     headers:{
-        //         "Accept": "application/json",
-        //         "Content-Type": "application/json"
-        //     },body: JSON.stringify(note)
-        // }
-
-        // return fetch(`http://localhost:3001/api/v1/${match.url}/notes`,postData )
-        // .then(resp=>resp.json())
-        // .then(note=>{
-        //     console.log(note.data);
-        //     dispatch(createNote(note.data));
-        // })
-        // .catch(error=>console.error('Error:', error))
+        const postData = {
+            method: 'DELETE',
+            headers:{
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }}
+        return fetch(`http://localhost:3001/api/v1/${match.url}/notes/${noteId}`,postData )
+        .then(resp=>resp.json())
+        .then(note=>{
+            console.log(note);
+            dispatch(deleteNote(noteId));
+            // dispatch(createNote(note.data));
+        })
+        .catch(error=>console.error('Error:', error))
     }
 
 }

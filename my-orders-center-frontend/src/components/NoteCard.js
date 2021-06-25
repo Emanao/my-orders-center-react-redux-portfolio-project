@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { deleteNoteRequest } from '../actions/notes'
 
-const NoteCard = ({note, deleteNoteRequest})=>{
+const NoteCard = ({ match, note, deleteNoteRequest})=>{
     const handleClick = (event)=>{
         console.log(note);
-        deleteNoteRequest(note);
+        deleteNoteRequest(match, note.id);
 
     }
     
