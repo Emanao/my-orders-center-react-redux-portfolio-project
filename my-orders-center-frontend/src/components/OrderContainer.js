@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import NotesContainer from './NotesContainer'
+import OrderCard from './OrderCard'
 import {loadNotesRequest} from '../actions/notes'
 
 class OrderContainer extends React.Component{
@@ -9,20 +10,18 @@ class OrderContainer extends React.Component{
         this.props.loadNotesRequest(this.props.match)
     }
     render(){    
+        const {order, notes, match} = this.props;
         return (
-            !!this.props.order?
+            !!order?
             <div className='container'>
-                    <h3>Details of Order #: {this.props.order.attributes.nr}</h3>
-                    <p>Description: {this.props.order.attributes.description}</p>
-                    <p>Store: {this.props.order.attributes.site.name}</p>
-                    <p>Tracking link: {this.props.order.attributes.tracking_url}</p>
+                    <OrderCard order={order} />
                     <hr/>
                     <NotesContainer 
-                    orderId={this.props.order.id} 
-                    notes={this.props.notes} 
-                    match={this.props.match}/>
+                    orderId={order.id} 
+                    notes={notes} 
+                    match={match}/>
             </div>:null
-            )    
+        )    
     }
 }
 export default connect((state)=>({notes: state.notes}),{loadNotesRequest})(OrderContainer);
