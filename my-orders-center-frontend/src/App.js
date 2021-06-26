@@ -8,7 +8,7 @@ import OrderForm from './components/OrderForm'
 import {fetchOrders} from './actions/orders'
 
 import OrdersList from  './components/OrderList'
-import OrderCard from './components/OrderCard';
+import OrderContainer from './components/OrderContainer';
 
 class App extends React.Component {
     componentDidMount(){
@@ -37,7 +37,7 @@ class App extends React.Component {
                             const order = orders.find(order=>order.id===routerProps.match.params.orderId)
 
                             // console.log(order)
-                            return <OrderCard {...routerProps} order={order} />
+                            return <OrderContainer {...routerProps} order={order} />
                     }} />   
                 </Switch>      
 

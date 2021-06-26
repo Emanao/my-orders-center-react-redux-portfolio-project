@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import NotesContainer from './NotesContainer'
 import {loadNotesRequest} from '../actions/notes'
 
-class OrderCard extends React.Component{
+class OrderContainer extends React.Component{
     componentDidMount(){
         this.props.loadNotesRequest(this.props.match)
     }
@@ -25,4 +25,4 @@ class OrderCard extends React.Component{
             )    
     }
 }
-export default connect((state)=>({notes: state.notes}),{loadNotesRequest})(OrderCard);
+export default connect((state)=>({notes: state.notes}),{loadNotesRequest})(OrderContainer);

@@ -1,7 +1,7 @@
 export default function notes(state=[],action){
     switch(action.type){
         case "ADD_NOTE_REQUEST":
-            return [...state]
+            return state;
         case "ADD_NOTE":
             return state.concat(action.note)
         case "DELETE_NOTE":
