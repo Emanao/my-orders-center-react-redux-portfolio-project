@@ -16,6 +16,7 @@ class NotesForm extends React.Component{
             },
             this.props.match
             );
+        this.setState({content:""})
 
     }
 
