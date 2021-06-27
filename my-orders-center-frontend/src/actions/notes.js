@@ -65,7 +65,7 @@ export const deleteNoteRequest = (match, noteId) =>{
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             }}
-        return fetch(`http://localhost:3001/api/v1/${match.url}/notes/${noteId}`,postData )
+        return fetch(`http://localhost:3001/api/v1/notes/${noteId}`,postData )
         .then(resp=>resp.json())
         .then(note=>{
             dispatch(deleteNote(noteId));
