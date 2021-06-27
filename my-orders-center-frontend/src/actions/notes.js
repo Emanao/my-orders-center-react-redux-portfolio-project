@@ -23,6 +23,7 @@ export const loadNotes = (notes)=>{
         notes
     }
 }
+
 export const createNoteRequest = (note, match) =>{
     return dispatch =>{
         dispatch(addNoteRequest())
@@ -34,7 +35,7 @@ export const createNoteRequest = (note, match) =>{
             },body: JSON.stringify(note)
         }
 
-        return fetch(`http://localhost:3001/api/v1/${match.url}/notes`,postData )
+        return fetch(`http://localhost:3001/api/v1/notes`,postData )
         .then(resp=>resp.json())
         .then(note=>{
             console.log(note.data);
@@ -44,9 +45,9 @@ export const createNoteRequest = (note, match) =>{
     }
 
 }
-export const loadNotesRequest = (match)=>{
+export const loadNotesRequest = ()=>{
     return (dispatch)=>{
-        return fetch(`http://localhost:3001/api/v1/${match.url}/notes`)
+        return fetch(`http://localhost:3001/api/v1/notes`)
         .then(resp=>resp.json())
         .then(notes=>{
             console.log(notes.data);
