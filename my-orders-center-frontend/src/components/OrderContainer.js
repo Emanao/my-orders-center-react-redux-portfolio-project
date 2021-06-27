@@ -3,25 +3,35 @@ import { connect } from 'react-redux'
 
 import NotesContainer from './NotesContainer'
 import OrderCard from './OrderCard'
-import {loadNotesRequest} from '../actions/notes'
+import {deleteNoteRequest, createNoteRequest} from '../actions/notes'
+
 
 class OrderContainer extends React.Component{
-    componentDidMount(){
-        this.props.loadNotesRequest(this.props.match)
+    loadOrderNotes=()=>{
+        const {order, notes} = this.props;
+        const orderNotes = notes.filter(note=>note.attributes.order.id.toString() === order.id)
+        return  orderNotes
     }
+   
     render(){    
-        const {order, notes, match} = this.props;
+        const {order, match, deleteNoteRequest, createNoteRequest} = this.props;
         return (
-            !!order?
+            !!order.id?
             <div className='container'>
-                    <OrderCard order={order} />
+                    <OrderCard 
+                    order={order} />
                     <hr/>
                     <NotesContainer 
-                    orderId={order.id} 
-                    notes={notes} 
-                    match={match}/>
+                    order={order}
+                    notes={this.loadOrderNotes()}
+                    match={match}
+                    createNote={createNoteRequest}
+                    deleteNote={deleteNoteRequest}/>
             </div>:null
         )    
     }
 }
-export default connect((state)=>({notes: state.notes}),{loadNotesRequest})(OrderContainer);
+export default connect(
+    (state)=>({notes: state.notes}),
+    {createNoteRequest, deleteNoteRequest})
+    (OrderContainer);

@@ -5,14 +5,18 @@ import { connect } from 'react-redux'
 import {NavBar} from './components/NavBar'
 import {Home} from './components/Home'
 import OrderForm from './components/OrderForm'
-import {fetchOrders} from './actions/orders'
+import { fetchOrders } from './actions/orders'
+import { loadNotesRequest } from './actions/notes'
 
 import OrdersList from  './components/OrderList'
 import OrderContainer from './components/OrderContainer';
 
 class App extends React.Component {
     componentDidMount(){
+        console.log("in aApp. Loading")
+
         this.props.fetchOrders();
+        this.props.loadNotesRequest()
     }
 
     render(){
@@ -20,7 +24,7 @@ class App extends React.Component {
         return (
             <div>              
                 <NavBar />
-                
+
                 <Switch>       
                     <Route exact path='/orders/new'
                         component={ OrderForm }/>
@@ -31,27 +35,23 @@ class App extends React.Component {
                     <Route path={`/orders/:orderId`} 
                         render={(routerProps)=>{
 
-                            // console.log(props)
-                            // console.log(props.match.params.orderId)
-
                             const order = orders.find(order=>order.id===routerProps.match.params.orderId)
 
-                            // console.log(order)
-                            return <OrderContainer {...routerProps} order={order} />
+                            return (!!order?  <OrderContainer {...routerProps} order={order} />: <div>Order not found</div>  )
+                            
                     }} />   
                 </Switch>      
 
-
-                
                 <Route exact path='/'
                     component ={ Home }/>
-                
 
-                     
             </div>
           );        
     }
 }
 
-export default connect(({orders})=>({orders}), {fetchOrders} )(App);
+export default connect(
+    ({orders})=>({orders}), 
+    {fetchOrders, loadNotesRequest} )
+    (App);
 

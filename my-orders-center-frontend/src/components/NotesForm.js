@@ -1,7 +1,4 @@
 import React from 'react'
-import {connect} from 'react-redux'
-
-import { createNoteRequest } from '../actions/notes'
 
 class NotesForm extends React.Component{
     state={
@@ -11,9 +8,8 @@ class NotesForm extends React.Component{
 
     handleSubmit = (event)=>{
         event.preventDefault();
-        console.log("props")
         console.log(this.props)
-        this.props.createNoteRequest(
+        this.props.createNote(
             {
             content: this.state.content, 
             order_id: this.props.orderId
@@ -45,4 +41,4 @@ class NotesForm extends React.Component{
         )
     }
 }
-export default connect(null,{ createNoteRequest })(NotesForm);
+export default NotesForm;
