@@ -1,9 +1,9 @@
 import React from 'react'
 // 
 const NoteCard = (props)=>{
-    const { match, note, deleteNote} = props
+    const { note, deleteNote} = props
 
-    const handleClick = ()=>deleteNote(match, note.id);
+    const handleClick = ()=>deleteNote(note.id);
     
     return (
         <div> 

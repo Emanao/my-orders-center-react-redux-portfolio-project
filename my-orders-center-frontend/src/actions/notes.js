@@ -9,14 +9,12 @@ export const addNoteRequest = () =>{
         type: "ADD_NOTE_REQUEST",
     }
 }
-
 export const deleteNote = (noteId)=> {
     return {
         type: "DELETE_NOTE",
         noteId
     }
 }
-
 export const loadNotes = (notes)=>{
     return {
         type: "LOAD_NOTES",
@@ -24,7 +22,7 @@ export const loadNotes = (notes)=>{
     }
 }
 
-export const createNoteRequest = (note, match) =>{
+export const createNoteRequest = (note) =>{
     return dispatch =>{
         dispatch(addNoteRequest())
         const postData = {
@@ -38,7 +36,6 @@ export const createNoteRequest = (note, match) =>{
         return fetch(`http://localhost:3001/api/v1/notes`,postData )
         .then(resp=>resp.json())
         .then(note=>{
-            console.log(note.data);
             dispatch(createNote(note.data));
         })
         .catch(error=>console.error('Error:', error))
@@ -50,14 +47,13 @@ export const loadNotesRequest = ()=>{
         return fetch(`http://localhost:3001/api/v1/notes`)
         .then(resp=>resp.json())
         .then(notes=>{
-            console.log(notes.data);
             dispatch(loadNotes(notes.data))
         })
         .catch(error=>console.error('Error:', error))
     }
 }
 
-export const deleteNoteRequest = (match, noteId) =>{
+export const deleteNoteRequest = (noteId) =>{
     return dispatch =>{
         const postData = {
             method: 'DELETE',

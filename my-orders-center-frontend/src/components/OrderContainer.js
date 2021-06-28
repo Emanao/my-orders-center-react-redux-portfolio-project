@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import NotesContainer from './NotesContainer'
 import OrderCard from './OrderCard'
 import {deleteNoteRequest, createNoteRequest} from '../actions/notes'
+import {deleteOrderRequest} from '../actions/orders'
 
 
 class OrderContainer extends React.Component{
@@ -14,12 +15,15 @@ class OrderContainer extends React.Component{
     }
    
     render(){    
-        const {order, match, deleteNoteRequest, createNoteRequest} = this.props;
+        console.log(this.props)
+        const {order, match, history, deleteNoteRequest, createNoteRequest, deleteOrderRequest} = this.props;
         return (
             !!order.id?
             <div className='container'>
                     <OrderCard 
-                    order={order} />
+                    order={order}
+                    history={history}
+                    deleteOrder={deleteOrderRequest} />
                     <hr/>
                     <NotesContainer 
                     order={order}
@@ -33,5 +37,5 @@ class OrderContainer extends React.Component{
 }
 export default connect(
     (state)=>({notes: state.notes}),
-    {createNoteRequest, deleteNoteRequest})
+    {deleteOrderRequest, createNoteRequest, deleteNoteRequest})
     (OrderContainer);

@@ -3,10 +3,7 @@ import { connect } from 'react-redux'
 // import { Route } from 'react-router-dom'
 import OrderListItem from './OrderListItem'
 
-const OrdersList = ({orders, match})=>{
-    console.log("Orders");
-    console.log(orders);
-    console.log(match)
+const OrdersList = ({orders})=>{
     const ordersList = orders.map(order=><OrderListItem key={order.id} order={order}/>);
     return(
         <>

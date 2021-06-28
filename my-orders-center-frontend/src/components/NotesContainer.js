@@ -5,12 +5,11 @@ import NoteCard from './NoteCard';
 
 // 
 const NotesContainer =(props)=>{
-    const {match, order, notes, deleteNote, createNote} = props;
+    const {order, notes, deleteNote, createNote} = props;
 
     return(            
         <div>
             <NotesForm 
-            match={match} 
             createNote={createNote}
             orderId={order.id}
             />
@@ -18,7 +17,6 @@ const NotesContainer =(props)=>{
             <div className="row gx-5">
                 {notes.map(note=><div key={note.id}>
                     <NoteCard 
-                        match={match} 
                         note={note} 
                         deleteNote={deleteNote}
                         />

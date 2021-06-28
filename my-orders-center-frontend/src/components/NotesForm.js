@@ -13,9 +13,7 @@ class NotesForm extends React.Component{
             {
             content: this.state.content, 
             order_id: this.props.orderId
-            },
-            this.props.match
-            );
+            });
         this.setState({content:""})
 
     }

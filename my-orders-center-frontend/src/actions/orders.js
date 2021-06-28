@@ -5,12 +5,17 @@
         order: order
     }
 }
-
 export const addOrderRequest = () =>{
     return {
         type: "ADD_ORDER_REQUEST",
     }
 
+}
+export const deleteOrder = (orderId)=> {
+    return {
+        type: "DELETE_ORDER",
+        orderId
+    }
 }
 export const loadOrders = (orders)=>{
     return {
@@ -18,6 +23,7 @@ export const loadOrders = (orders)=>{
         orders
     }
 }
+
 
 //asynchronous action creator that returns a functions instead of an action. Inner function receives the store and getState from the store. 
 export const createOrderRequest = (order, history) =>{
@@ -47,9 +53,28 @@ export const fetchOrders = ()=>{
         return fetch('http://localhost:3001/api/v1/orders')
         .then(resp=>resp.json())
         .then(orders=>{
-            console.log(orders.data);
             dispatch(loadOrders(orders.data))
         })
         .catch(error=>console.error('Error:', error))
     }
+}
+export const deleteOrderRequest = ( history, orderId) =>{
+    console.log(orderId);
+    return dispatch =>{
+        const postData = {
+            method: 'DELETE',
+            headers:{
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }}
+        return fetch(`http://localhost:3001/api/v1/orders/${orderId}`,postData )
+        .then(resp=>resp.json())
+        .then(note=>{
+            dispatch(deleteOrder(orderId));
+            history.push(`/orders/`)
+
+        })
+        .catch(error=>console.error('Error:', error))
+    }
+
 }
