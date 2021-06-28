@@ -37,7 +37,7 @@ class App extends React.Component {
 
                             const order = orders.find(order=>order.id===routerProps.match.params.orderId)
 
-                            return (!!order?  <OrderContainer {...routerProps} order={order} />: <div>Order not found</div>  )
+                            return (!!order?  <OrderContainer {...routerProps} order={order} />:null  )
                             
                     }} />   
                 </Switch>      
