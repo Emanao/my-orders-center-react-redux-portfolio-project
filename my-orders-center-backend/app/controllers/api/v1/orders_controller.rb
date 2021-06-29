@@ -3,7 +3,7 @@ class Api::V1::OrdersController < ApplicationController
         orders = Order.all
         if orders.empty?
             render json: {
-                error: "No created orders yet"
+                error: "No existing orders yet"
             }
         else
             render json: OrderSerializer.new(orders).serialized_json
@@ -11,7 +11,7 @@ class Api::V1::OrdersController < ApplicationController
         
     end
     def create
-        order = Order.new(nr:params[:order][:nr], description:params[:order][:description])
+        order = Order.new(nr:params[:order][:nr], description:params[:order][:description], tracking_url:params[:order][:tracking_url])
         order.site = Site.find_or_initialize_by(name:params[:order][:site]) 
         
         if order.save
@@ -34,7 +34,7 @@ class Api::V1::OrdersController < ApplicationController
 
     private
     def order_params
-        params.require(:order).permit(:nr, :site, :description)
+        params.require(:order).permit(:nr, :description, :tracking_url, sites_attributes: [:name])
     end
 
 end
