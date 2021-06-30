@@ -23,7 +23,7 @@ const NotesContainer =(props)=>{
                 <thead>
                     <tr>
                         <th className="col-sm-1" scope="col"> </th>
-                        <th className="col-sm-2" scope="col">Created on</th>
+                        <th className="col-sm-2" scope="col">Created</th>
                         <th className="col-sm-9" scope="col">Notes</th>
                     </tr>
                 </thead>
