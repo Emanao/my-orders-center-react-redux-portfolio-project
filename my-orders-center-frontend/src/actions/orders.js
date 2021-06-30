@@ -40,7 +40,6 @@ export const createOrderRequest = (order, history) =>{
         return fetch('http://localhost:3001/api/v1/orders',postData )
         .then(resp=>resp.json())
         .then(order=>{
-            console.log(order.data);
             dispatch(createOrder(order.data));
             history.push(`/orders/${order.data.id}`)
         })
@@ -59,7 +58,6 @@ export const fetchOrders = ()=>{
     }
 }
 export const deleteOrderRequest = ( history, orderId) =>{
-    console.log(orderId);
     return dispatch =>{
         const postData = {
             method: 'DELETE',
