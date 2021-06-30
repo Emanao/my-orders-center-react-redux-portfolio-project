@@ -40,11 +40,9 @@ class App extends React.Component {
                             return (!!order?  <OrderContainer {...routerProps} order={order} />:null  )
                             
                     }} />   
-                </Switch>      
-
                 <Route exact path='/'
                     component ={ Home }/>
-
+            </Switch>      
             </div>
           );        
     }
