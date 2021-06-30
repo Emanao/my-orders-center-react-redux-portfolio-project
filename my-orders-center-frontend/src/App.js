@@ -13,8 +13,6 @@ import OrderContainer from './components/OrderContainer';
 
 class App extends React.Component {
     componentDidMount(){
-        console.log("in aApp. Loading")
-
         this.props.fetchOrders();
         this.props.loadNotesRequest()
     }
@@ -25,24 +23,23 @@ class App extends React.Component {
             <div>              
                 <NavBar />
 
-                <Switch>       
+                {/* <Switch>        */}
                     <Route exact path='/orders/new'
                         component={ OrderForm }/>
                     
-                    <Route exact path='/orders' 
-                        component= { OrdersList }/>
                                         
                     <Route path={`/orders/:orderId`} 
                         render={(routerProps)=>{
-
                             const order = orders.find(order=>order.id===routerProps.match.params.orderId)
-
                             return (!!order?  <OrderContainer {...routerProps} order={order} />:null  )
-                            
                     }} />   
-                <Route exact path='/'
-                    component ={ Home }/>
-            </Switch>      
+
+                    <Route exact path='/orders' 
+                        component= { OrdersList }/>
+
+                    <Route exact path='/'
+                        component ={ Home }/>
+            {/* </Switch>       */}
             </div>
           );        
     }
