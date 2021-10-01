@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { connect } from 'react-redux'
 
 import {NavBar} from './components/NavBar'
@@ -22,8 +22,6 @@ class App extends React.Component {
         return (
             <div>              
                 <NavBar />
-
-                {/* <Switch>        */}
                     <Route exact path='/orders/new'
                         component={ OrderForm }/>
                     
@@ -39,7 +37,6 @@ class App extends React.Component {
 
                     <Route exact path='/'
                         component ={ Home }/>
-            {/* </Switch>       */}
             </div>
           );        
     }
